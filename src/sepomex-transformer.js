@@ -1,6 +1,6 @@
 const fs = require('fs')
 const file = fs.readFileSync('./CPdescarga.txt', 'utf8')
-const [, header, ...lines] = file.split('\n')
+const [, , ...lines] = file.split('\n')
 const items = {}
 lines
   .filter(line => line !== '')
@@ -24,7 +24,7 @@ lines
     ] = line.replace('\r', '').split('|')
     if (!items[cp]) items[cp] = {}
     items[cp].city = { value: cityCode, label: cityName }
-    items[cp].minicipality = { value: municipalityCode, label: municipalityName }
+    items[cp].municipality = { value: municipalityCode, label: municipalityName }
     if (!items[cp].settlements) items[cp].settlements = []
     items[cp].settlements.push({ value: settementCode, label: settlementName })
     items[cp].state = { value: stateCode, label: stateName }
